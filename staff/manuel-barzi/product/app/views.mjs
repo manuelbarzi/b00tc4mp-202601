@@ -34,6 +34,7 @@ export function createLandingView() {
     return landingView
 }
 
+// TODO make password input protected to the view (****)
 export function createLoginView() {
     var loginView = document.createElement('div')
 
@@ -84,6 +85,7 @@ export function createLoginView() {
     return loginView
 }
 
+// TODO make password input protected to the view (****)
 export function createRegisterView() {
     var registerView = document.createElement('div')
 
@@ -136,6 +138,12 @@ export function createRegisterView() {
     var registerSubmitButtonText = document.createTextNode('Register')
     registerSubmitButton.appendChild(registerSubmitButtonText)
     registerForm.appendChild(registerSubmitButton)
+
+    var registerLoginLink = document.createElement('a')
+    registerLoginLink.href = ''
+    var registerLoginText = document.createTextNode('Login')
+    registerLoginLink.appendChild(registerLoginText)
+    registerView.appendChild(registerLoginLink)
 
     return registerView
 }
