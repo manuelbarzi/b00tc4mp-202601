@@ -6,10 +6,14 @@ export var data = {
     },
 
     findUserByEmail: function(email) {
-        // TODO implement me
+        return users.find(function(user) {
+            return user.email === email
+        }) || null
     },
 
     findUserByUsername: function(username) {
-        // TODO implement me
+        return users.find(function(user) {
+            return user.username === username
+        }) || null
     }
 }

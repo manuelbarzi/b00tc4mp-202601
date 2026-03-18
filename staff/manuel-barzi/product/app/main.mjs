@@ -12,7 +12,7 @@ var homeView = createHomeView()
 document.body.appendChild(landingView)
 
 var landingLoginLink = landingView.children[1].children[0]
-landingLoginLink.addEventListener('click', function(event) {
+landingLoginLink.addEventListener('click', function (event) {
     event.preventDefault()
 
     document.body.removeChild(landingView)
@@ -20,7 +20,7 @@ landingLoginLink.addEventListener('click', function(event) {
 })
 
 var landingRegisterLink = landingView.children[1].children[1]
-landingRegisterLink.addEventListener('click', function(event) {
+landingRegisterLink.addEventListener('click', function (event) {
     event.preventDefault()
 
     document.body.removeChild(landingView)
@@ -28,7 +28,7 @@ landingRegisterLink.addEventListener('click', function(event) {
 })
 
 var loginRegisterLink = loginView.children[3]
-loginRegisterLink.addEventListener('click', function(event) {
+loginRegisterLink.addEventListener('click', function (event) {
     event.preventDefault()
 
     document.body.removeChild(loginView)
@@ -36,15 +36,17 @@ loginRegisterLink.addEventListener('click', function(event) {
 })
 
 var registerLoginLink = registerView.children[3]
-registerLoginLink.addEventListener('click', function(event) {
+registerLoginLink.addEventListener('click', function (event) {
     event.preventDefault()
 
     document.body.removeChild(registerView)
     document.body.appendChild(loginView)
 })
 
+var registerFeedbackPanel = registerView.children[4]
+
 var registerForm = registerView.children[2]
-registerForm.addEventListener('submit', function(event) {
+registerForm.addEventListener('submit', function (event) {
     event.preventDefault()
 
     var nameInput = registerForm.children[1]
@@ -57,12 +59,17 @@ registerForm.addEventListener('submit', function(event) {
     var username = usernameInput.value
     var password = passwordInput.value
 
-    logic.registerUser(name, email, username, password)
+    try {
+        logic.registerUser(name, email, username, password)
 
-    registerForm.reset()
+        registerForm.reset()
+        registerFeedbackPanel.textContent = ''
 
-    document.body.removeChild(registerView)
-    document.body.appendChild(loginView)
+        document.body.removeChild(registerView)
+        document.body.appendChild(loginView)
+    } catch (error) {
+        registerFeedbackPanel.textContent = error.message
+    }
 })
 
 // TODO implement login flow

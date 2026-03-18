@@ -145,6 +145,9 @@ export function createRegisterView() {
     registerLoginLink.appendChild(registerLoginText)
     registerView.appendChild(registerLoginLink)
 
+    var registerFeedbackPanel = document.createElement('p')
+    registerView.appendChild(registerFeedbackPanel)
+
     return registerView
 }
 
