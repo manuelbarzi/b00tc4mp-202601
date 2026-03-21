@@ -69,6 +69,7 @@ export function createLoginView() {
     loginPasswordLabel.appendChild(loginPasswordLabelText)
     loginForm.appendChild(loginPasswordLabel)
     var loginPasswordInput = document.createElement('input')
+    loginPasswordInput.type = 'password'
     loginForm.appendChild(loginPasswordInput)
     var loginSubmitButton = document.createElement('button')
     var loginSubmitButtonText = document.createTextNode('Login')
@@ -81,6 +82,9 @@ export function createLoginView() {
     var logingRegisterText = document.createTextNode('Register')
     loginRegisterLink.appendChild(logingRegisterText)
     loginView.appendChild(loginRegisterLink)
+
+    var loginFeedbackPanel = document.createElement('p')
+    loginView.appendChild(loginFeedbackPanel)
 
     return loginView
 }
@@ -132,7 +136,14 @@ export function createRegisterView() {
     registerPasswordLabel.appendChild(registerPasswordLabelText)
     registerForm.appendChild(registerPasswordLabel)
     var registerPasswordInput = document.createElement('input')
+    registerPasswordInput.type = 'password'
     registerForm.appendChild(registerPasswordInput)
+    var registerPasswordRepeatLabel = document.createElement('label')
+    registerPasswordRepeatLabel.textContent = 'Repeat password'
+    registerForm.appendChild(registerPasswordRepeatLabel)
+    var registerPasswordRepeatInput = document.createElement('input')
+    registerPasswordRepeatInput.type = 'password'
+    registerForm.appendChild(registerPasswordRepeatInput)
     registerView.appendChild(registerForm)
     var registerSubmitButton = document.createElement('button')
     var registerSubmitButtonText = document.createTextNode('Register')
@@ -172,6 +183,10 @@ export function createHomeView() {
     var homeTitleText = document.createTextNode('Hello, Home!')
     homeTitle.appendChild(homeTitleText)
     homeView.appendChild(homeTitle)
+
+    var homeLogoutButton = document.createElement('button')
+    homeLogoutButton.textContent = 'Logout'
+    homeView.appendChild(homeLogoutButton)
 
     return homeView
 }
