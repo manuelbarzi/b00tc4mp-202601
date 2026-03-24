@@ -40,5 +40,19 @@ export var logic = {
         if (!user) throw new Error('user not found')
 
         if (user.password !== password) throw new Error('wrong password')
+
+        data.setLoggedInUserId(user.id)
+    },
+
+    getLoggedInUserName: function() {
+        var userId = data.getLoggedInUserId()
+
+        var user = data.findUserById(userId)
+
+        return user.name
+    },
+
+    logoutUser: function() {
+        data.setLoggedInUserId(null)
     }
 }

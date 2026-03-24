@@ -1,7 +1,9 @@
 var users = []
+var loggedInUserId = null
 
 export var data = {
     insertUser: function(user) {
+        user.id = 'ID' + Math.random().toString().slice(2)
         users.push(user)
     },
 
@@ -15,5 +17,19 @@ export var data = {
         return users.find(function(user) {
             return user.username === username
         }) || null
+    },
+
+    findUserById: function(userId) {
+        return users.find(function(user) {
+            return user.id === userId
+        }) || null
+    },
+
+    setLoggedInUserId: function(userId) {
+        loggedInUserId = userId
+    },
+
+    getLoggedInUserId: function() {
+        return loggedInUserId
     }
 }

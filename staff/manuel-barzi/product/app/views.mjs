@@ -184,9 +184,60 @@ export function createHomeView() {
     homeTitle.appendChild(homeTitleText)
     homeView.appendChild(homeTitle)
 
+    var homeProfileLink = document.createElement('a')
+    homeProfileLink.href = ''
+    homeProfileLink.textContent = 'Profile'
+    homeView.appendChild(homeProfileLink)
+
     var homeLogoutButton = document.createElement('button')
     homeLogoutButton.textContent = 'Logout'
     homeView.appendChild(homeLogoutButton)
 
+    var homeFeedbackPanel = document.createElement('p')
+    homeView.appendChild(homeFeedbackPanel)
+
     return homeView
 }
+
+export function createProfileView() {
+    var profileView = document.createElement('div')
+
+    var profileHeader = document.createElement('header')
+    var profileLogo = document.createElement('img')
+    profileLogo.src = 'https://cdn.prod.website-files.com/624ac40503a527cf47af4192/659ba59520d886f0cb86d3ba_ai-logo-generator-4.png'
+    profileLogo.style.width = '100px'
+    profileHeader.appendChild(profileLogo)
+    var profileHeaderSpaceText = document.createTextNode(' ')
+    profileHeader.appendChild(profileHeaderSpaceText)
+    var profileTitle = document.createElement('h1')
+    profileTitle.style.display = 'inLine-block'
+    var profileTitleText = document.createTextNode('App')
+    profileTitle.appendChild(profileTitleText)
+    profileHeader.appendChild(profileTitle)
+    profileView.appendChild(profileHeader)
+
+    var profileTitle = document.createElement('h2')
+    var profileTitleText = document.createTextNode('Profile')
+    profileTitle.appendChild(profileTitleText)
+    profileView.appendChild(profileTitle)
+
+    // TODO add back button (link) to go back to home view
+
+    var profileNameForm = document.createElement('form')
+    var profileNameLabel = document.createElement('label')
+    var profileNameLabelText = document.createTextNode('Name')
+    profileNameLabel.appendChild(profileNameLabelText)
+    profileNameForm.appendChild(profileNameLabel)
+    var profileNameInput = document.createElement('input')
+    profileNameForm.appendChild(profileNameInput)
+    var profileNameSubmitButton = document.createElement('button')
+    profileNameSubmitButton.textContent = 'Update name'
+    profileNameForm.appendChild(profileNameSubmitButton)
+    profileView.appendChild(profileNameForm)
+
+    var profileFeedbackPanel = document.createElement('p')
+    profileView.appendChild(profileFeedbackPanel)
+
+    return profileView
+}
+

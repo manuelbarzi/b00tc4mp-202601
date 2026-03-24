@@ -1,5 +1,5 @@
 import './populate.mjs'
-import { createHomeView, createLandingView, createLoginView, createRegisterView } from './views.mjs'
+import { createHomeView, createLandingView, createLoginView, createRegisterView, createProfileView } from './views.mjs'
 import { logic } from './logic.mjs'
 
 var titleText = document.createTextNode('App')
@@ -9,6 +9,7 @@ var landingView = createLandingView()
 var loginView = createLoginView()
 var registerView = createRegisterView()
 var homeView = createHomeView()
+var profileView = createProfileView()
 
 document.body.appendChild(landingView)
 
@@ -99,13 +100,10 @@ loginForm.addEventListener('submit', function (event) {
         loginForm.reset()
         loginFeedbackPanel.textContent = ''
 
-        // TODO set user name in home title saluation (ex: 'Hello, Peter!')
-        // TODO call logic getLoggedInUser()
-        /*
-        var user = logic.getLoggedInUser()
+        var userName = logic.getLoggedInUserName()
 
-        // inject user.name in h2 with salutation (.textContent = ...)
-        */
+        var homeTitle = homeView.children[1]
+        homeTitle.textContent = 'Hello, ' + userName + '!'
 
         document.body.removeChild(loginView)
         document.body.appendChild(homeView)
@@ -114,8 +112,26 @@ loginForm.addEventListener('submit', function (event) {
     }
 })
 
-var homeLogoutButton = homeView.children[2]
-homeLogoutButton.addEventListener('click', function(event) {
+var homeProfileLink = homeView.children[2]
+homeProfileLink.addEventListener('click', function(event) {
+    event.preventDefault()
+
     document.body.removeChild(homeView)
-    document.body.appendChild(loginView)
+    document.body.appendChild(profileView)
 })
+
+var homeFeedbackPanel = homeView.children[4]
+
+var homeLogoutButton = homeView.children[3]
+homeLogoutButton.addEventListener('click', function (event) {
+    try {
+        logic.logoutUser()
+
+        document.body.removeChild(homeView)
+        document.body.appendChild(loginView)
+    } catch (error) {
+        homeFeedbackPanel.textContent = error.message
+    }
+})
+
+// TODO implement prefile name form submit behavior to catch new user name and call logic.updateUserName(newName). if fine, then show 'User name successfully updated' in profile feedback panel.
