@@ -134,4 +134,24 @@ homeLogoutButton.addEventListener('click', function (event) {
     }
 })
 
+var profileFeedbackPanel = profileView.children[3]
+
+var profileForm = profileView.children[2]
+profileForm.addEventListener('submit', function (event) {
+    event.preventDefault()
+
+    var nameInput = profileForm.children[1]
+
+    var name = nameInput.value
+
+    try {
+        logic.modifyUserName(name)
+
+        profileForm.reset()
+        profileFeedbackPanel.textContent = 'user name successfully updated'
+    } catch (error) {
+        profileFeedbackPanel.textContent = error.message
+    }
+})
+
 // TODO implement prefile name form submit behavior to catch new user name and call logic.updateUserName(newName). if fine, then show 'User name successfully updated' in profile feedback panel.

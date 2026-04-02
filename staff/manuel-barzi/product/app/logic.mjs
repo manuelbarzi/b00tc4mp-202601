@@ -54,5 +54,12 @@ export var logic = {
 
     logoutUser: function() {
         data.setLoggedInUserId(null)
+    },
+
+    modifyUserName: function(name) {
+        var userId = data.getLoggedInUserId()
+
+        data.updateUserName(userId, name)
     }
 }
+

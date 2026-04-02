@@ -31,5 +31,13 @@ export var data = {
 
     getLoggedInUserId: function() {
         return loggedInUserId
+    },
+
+    updateUserName: function(userId, name) {
+        var user = users.find(function(user) {
+            return user.id === userId
+        }) || null
+
+        if (user) user.name = name
     }
 }
