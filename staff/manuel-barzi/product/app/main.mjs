@@ -113,7 +113,7 @@ loginForm.addEventListener('submit', function (event) {
 })
 
 var homeProfileLink = homeView.children[2]
-homeProfileLink.addEventListener('click', function(event) {
+homeProfileLink.addEventListener('click', function (event) {
     event.preventDefault()
 
     document.body.removeChild(homeView)
@@ -134,24 +134,53 @@ homeLogoutButton.addEventListener('click', function (event) {
     }
 })
 
-var profileFeedbackPanel = profileView.children[3]
-
-var profileForm = profileView.children[2]
-profileForm.addEventListener('submit', function (event) {
+var profileHomeLink = profileView.children[2]
+profileHomeLink.addEventListener('click', function (event) {
     event.preventDefault()
 
-    var nameInput = profileForm.children[1]
+    document.body.removeChild(profileView)
+    document.body.appendChild(homeView)
+})
 
-    var name = nameInput.value
+var profileFeedbackPanel = profileView.children[5]
+
+var profileNameForm = profileView.children[3]
+profileNameForm.addEventListener('submit', function (event) {
+    event.preventDefault()
+
+    var nameInput = profileNameForm.children[1]
+
+    var userName = nameInput.value
 
     try {
-        logic.modifyUserName(name)
+        logic.modifyUserName(userName)
 
-        profileForm.reset()
+        profileNameForm.reset()
         profileFeedbackPanel.textContent = 'user name successfully updated'
+
+        var homeTitle = homeView.children[1]
+        homeTitle.textContent = 'Hello, ' + userName + '!'
     } catch (error) {
         profileFeedbackPanel.textContent = error.message
     }
 })
 
-// TODO implement prefile name form submit behavior to catch new user name and call logic.updateUserName(newName). if fine, then show 'User name successfully updated' in profile feedback panel.
+var profileEmailForm = profileView.children[4]
+profileEmailForm.addEventListener('submit', function (event) {
+    event.preventDefault()
+
+    var nameInput = profileEmailForm.children[1]
+
+    var name = nameInput.value
+
+    try {
+        logic.modifyUserEmail(name)
+
+        profileEmailForm.reset()
+        profileFeedbackPanel.textContent = 'user email successfully updated'
+    } catch (error) {
+        profileFeedbackPanel.textContent = error.message
+    }
+})
+
+// TODO implement password form (current password, new password, new password repeat)

@@ -124,6 +124,7 @@ export function createRegisterView() {
     registerEmailLabel.appendChild(registerEmailLabelText)
     registerForm.appendChild(registerEmailLabel)
     var registerEmailInput = document.createElement('input')
+    registerEmailInput.type = 'email'
     registerForm.appendChild(registerEmailInput)
     var registerUsernameLabel = document.createElement('label')
     var registerUsernameLabelText = document.createTextNode('Username')
@@ -221,7 +222,10 @@ export function createProfileView() {
     profileTitle.appendChild(profileTitleText)
     profileView.appendChild(profileTitle)
 
-    // TODO add back button (link) to go back to home view
+    var profileHomeLink = document.createElement('a')
+    profileHomeLink.textContent = 'Back'
+    profileHomeLink.href = ''
+    profileView.appendChild(profileHomeLink)
 
     var profileNameForm = document.createElement('form')
     var profileNameLabel = document.createElement('label')
@@ -234,6 +238,19 @@ export function createProfileView() {
     profileNameSubmitButton.textContent = 'Update name'
     profileNameForm.appendChild(profileNameSubmitButton)
     profileView.appendChild(profileNameForm)
+
+    var profileEmailForm = document.createElement('form')
+    var profileEmailLabel = document.createElement('label')
+    var profileEmailLabelText = document.createTextNode('Email')
+    profileEmailLabel.appendChild(profileEmailLabelText)
+    profileEmailForm.appendChild(profileEmailLabel)
+    var profileEmailInput = document.createElement('input')
+    profileEmailInput.type = 'email'
+    profileEmailForm.appendChild(profileEmailInput)
+    var profileEmailSubmitButton = document.createElement('button')
+    profileEmailSubmitButton.textContent = 'Update name'
+    profileEmailForm.appendChild(profileEmailSubmitButton)
+    profileView.appendChild(profileEmailForm)
 
     var profileFeedbackPanel = document.createElement('p')
     profileView.appendChild(profileFeedbackPanel)

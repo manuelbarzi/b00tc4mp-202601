@@ -39,5 +39,13 @@ export var data = {
         }) || null
 
         if (user) user.name = name
+    },
+
+    updateUserEmail: function(userId, email) {
+        var user = users.find(function(user) {
+            return user.id === userId
+        }) || null
+
+        if (user) user.email = email
     }
 }

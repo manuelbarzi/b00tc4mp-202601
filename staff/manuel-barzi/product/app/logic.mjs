@@ -60,6 +60,12 @@ export var logic = {
         var userId = data.getLoggedInUserId()
 
         data.updateUserName(userId, name)
+    },
+
+    modifyUserEmail: function(email) {
+        var userId = data.getLoggedInUserId()
+
+        data.updateUserEmail(userId, email)
     }
 }
 
