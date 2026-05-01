@@ -1,8 +1,35 @@
+import { logic } from '../logic'
+import { useState } from 'react'
+
 export function RegisterView(props) {
+    var feedbackState = useState('')
+    var feedback = feedbackState[0]
+    var setFeedback = feedbackState[1]
+
     function handleLoginClick(event) {
         event.preventDefault()
 
         props.onLoginClicked()
+    }
+
+    function handleRegisterSubmit(event) {
+        event.preventDefault()
+
+        var name = event.target.name.value
+        var email = event.target.email.value
+        var username = event.target.username.value
+        var password = event.target.password.value
+        var passwordRepeat = event.target.passwordRepeat.value
+
+        try {
+            logic.registerUser(name, email, username, password, passwordRepeat)
+
+            event.target.reset()
+
+            props.onUserRegistered()
+        } catch (error) {
+            setFeedback(error.message)
+        }
     }
 
     return <div>
@@ -12,27 +39,27 @@ export function RegisterView(props) {
 
         <h2>Register</h2>
 
-        <form>
-            <label htmlFor="Name" style={{ fontWeight: "bold" }}>Name</label>
-            <input id="Name" placeholder="Name" />
+        <form onSubmit={handleRegisterSubmit}>
+            <label htmlFor="name" style={{ fontWeight: "bold" }}>Name</label>
+            <input id="name" placeholder="Name" />
 
-            <label htmlFor="Email" style={{ fontWeight: "bold" }}>Email</label>
-            <input id="Email" placeholder="Email" />
+            <label htmlFor="email" style={{ fontWeight: "bold" }}>Email</label>
+            <input id="email" placeholder="Email" />
 
-            <label htmlFor="Username" style={{ fontWeight: "bold" }}>Username</label>
-            <input id="Username" placeholder="Username" />
+            <label htmlFor="username" style={{ fontWeight: "bold" }}>Username</label>
+            <input id="username" placeholder="Username" />
 
-            <label htmlFor="Password" style={{ fontWeight: "bold" }}>Password</label>
-            <input id="Password" placeholder="Password" />
+            <label htmlFor="password" style={{ fontWeight: "bold" }}>Password</label>
+            <input id="password" type="password" placeholder="Password" />
 
-            <label htmlFor="RepeatPassword" style={{ fontWeight: "bold" }}>Repeat Password</label>
-            <input id="RepeatPassword" placeholder="Repeat Password" />
+            <label htmlFor="passwordRepeat" style={{ fontWeight: "bold" }}>Repeat Password</label>
+            <input id="passwordRepeat" type="password" placeholder="Repeat Password" />
 
             <button type="submit">Register</button>
         </form>
 
         <a href="" onClick={handleLoginClick}>Login</a>
 
-        <p></p>
+        {feedback && <p>{feedback}</p>}
     </div>
 }
