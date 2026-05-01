@@ -20,7 +20,6 @@
                 [
                     Babel.availablePlugins["transform-modules-umd"],
                     {
-                        exactGlobals: true,
                         globals: {
                             'react': 'React',
                             'react-dom': 'ReactDOM'
@@ -34,23 +33,23 @@
 
 
 
-    <script src="data.mjs" type="text/babel" data-plugins="transform-modules-umd" data-type="module"></script>
+    <script src="data.mjs" type="text/babel" data-presets="my-react-preset" data-type="module"></script>
 
-    <script src="logic.mjs" type="text/babel" data-plugins="transform-modules-umd" data-type="module"></script>
+    <script src="logic.mjs" type="text/babel" data-presets="my-react-preset" data-type="module"></script>
 
-    <script src="views/LandingView.jsx" type="text/babel" data-plugins="transform-modules-umd"
+    <script src="views/LandingView.jsx" type="text/babel" data-presets="my-react-preset"
         data-type="module"></script>
-    <script src="views/LoginView.jsx" type="text/babel" data-plugins="transform-modules-umd"
+    <script src="views/LoginView.jsx" type="text/babel" data-presets="my-react-preset"
         data-type="module"></script>
-    <script src="views/RegisterView.jsx" type="text/babel" data-plugins="transform-modules-umd"
+    <script src="views/RegisterView.jsx" type="text/babel" data-presets="my-react-preset"
         data-type="module"></script>
-    <script src="views/HomeView.jsx" type="text/babel" data-plugins="transform-modules-umd" data-type="module"></script>
-    <script src="views/ProfileView.jsx" type="text/babel" data-plugins="transform-modules-umd"
+    <script src="views/HomeView.jsx" type="text/babel" data-presets="my-react-preset" data-type="module"></script>
+    <script src="views/ProfileView.jsx" type="text/babel" data-presets="my-react-preset"
         data-type="module"></script>
-    <script src="views/index.jsx" type="text/babel" data-plugins="transform-modules-umd" data-type="module"></script>
+    <script src="views/index.jsx" type="text/babel" data-presets="my-react-preset" data-type="module"></script>
 
-    <script src="App.jsx" type="text/babel" data-plugins="transform-modules-umd" data-type="module"></script>
-    <script src="main.jsx" type="text/babel" data-plugins="transform-modules-umd" data-type="module"></script>
+    <script src="App.jsx" type="text/babel" data-presets="my-react-preset" data-type="module"></script>
+    <script src="main.jsx" type="text/babel" data-presets="my-react-preset" data-type="module"></script>
 </body>
 
 </html>

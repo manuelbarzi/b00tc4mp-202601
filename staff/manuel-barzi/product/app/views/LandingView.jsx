@@ -3,7 +3,13 @@ export function LandingView(props) {
         event.preventDefault()
 
         props.onLoginClicked()
-    }    
+    }
+
+    function handleRegisterClick(event) {
+        event.preventDefault()
+
+        props.onRegisterClicked()
+    }
 
     return <div>
         <header>
@@ -11,7 +17,7 @@ export function LandingView(props) {
         </header>
 
         <p>
-            <a href="" onClick={handleLoginClick}>Login</a> or <a href="">Register</a>
+            <a href="" onClick={handleLoginClick}>Login</a> or <a href="" onClick={handleRegisterClick}>Register</a>
         </p>
     </div>
 }

@@ -1,4 +1,9 @@
-export function RegisterView() {
+export function RegisterView(props) {
+    function handleLoginClick(event) {
+        event.preventDefault()
+
+        props.onLoginClicked()
+    }
 
     return <div>
         <header>
@@ -26,7 +31,7 @@ export function RegisterView() {
             <button type="submit">Register</button>
         </form>
 
-        <a href="">Login</a>
+        <a href="" onClick={handleLoginClick}>Login</a>
 
         <p></p>
     </div>
