@@ -1,14 +1,14 @@
-export function LandingView(props) {
-    function handleLoginClick(event) {
+export function LandingView({ onLoginClicked, onRegisterClicked }) {
+    var handleLoginClick = event => {
         event.preventDefault()
 
-        props.onLoginClicked()
+        onLoginClicked()
     }
 
-    function handleRegisterClick(event) {
+    var handleRegisterClick = event => {
         event.preventDefault()
 
-        props.onRegisterClicked()
+        onRegisterClicked()
     }
 
     return <div>

@@ -1,18 +1,17 @@
-import { logic } from '../logic'
 import { useState } from 'react'
 
-export function RegisterView(props) {
-    var feedbackState = useState('')
-    var feedback = feedbackState[0]
-    var setFeedback = feedbackState[1]
+import { logic } from '../logic'
 
-    function handleLoginClick(event) {
+export function RegisterView({ onLoginClicked, onUserRegistered }) {
+    var [feedback, setFeedback] = useState('')
+
+    var handleLoginClick = event => {
         event.preventDefault()
 
-        props.onLoginClicked()
+        onLoginClicked()
     }
 
-    function handleRegisterSubmit(event) {
+    var handleRegisterSubmit = event => {
         event.preventDefault()
 
         var name = event.target.name.value
@@ -26,7 +25,7 @@ export function RegisterView(props) {
 
             event.target.reset()
 
-            props.onUserRegistered()
+            onUserRegistered()
         } catch (error) {
             setFeedback(error.message)
         }
