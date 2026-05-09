@@ -1,4 +1,31 @@
-export function ProfileView() {
+import { useState } from 'react'
+
+import { logic } from '../logic'
+
+export function ProfileView({ onHomeClicked }) {
+    var [feedback, setFeedback] = useState('')
+
+    var handleHomeClick = event => {
+        event.preventDefault()
+
+        onHomeClicked()
+    }
+
+    var handleProfileNameSubmit = event => {
+        event.preventDefault()
+
+        var name = event.target.name.value
+
+        try {
+            logic.modifyUserName(name)
+
+            event.target.reset()
+
+            setFeedback('User name successfully updated')
+        } catch (error) {
+            setFeedback(error.message)
+        }
+    }
 
     return <div>
         <header>
@@ -7,36 +34,36 @@ export function ProfileView() {
 
         <h2>Profile</h2>
 
-        <button type="submit">Home</button>
+        <a href="" onClick={handleHomeClick}>Home</a>
 
-        <form>
-            <label htmlFor="Name" style={{ fontWeight: "bold" }}>Name</label>
-            <input id="Name" placeholder="Name" />
+        <form onSubmit={handleProfileNameSubmit}>
+            <label htmlFor="name" style={{ fontWeight: "bold" }}>Name</label>
+            <input id="name" placeholder="Name" />
             <button type="submit">Update name</button>
         </form>
 
         <form>
-            <label htmlFor="Email" style={{ fontWeight: "bold" }}>Email</label>
-            <input id="Email" placeholder="Email" />
+            <label htmlFor="email" style={{ fontWeight: "bold" }}>Email</label>
+            <input id="email" placeholder="Email" />
             <button type="submit">Update email</button>
         </form>
 
         <form>
-            <label htmlFor="Username" style={{ fontWeight: "bold" }}>Username</label>
-            <input id="Username" placeholder="Username" />
+            <label htmlFor="username" style={{ fontWeight: "bold" }}>Username</label>
+            <input id="username" placeholder="Username" />
             <button type="submit">Update username</button>
         </form>
 
         <form>
-            <label htmlFor="Password" style={{ fontWeight: "bold" }}>Password</label>
-            <input id="Password" placeholder="Password" />
-            <label htmlFor="NewPassword" style={{ fontWeight: "bold " }}>New Password</label>
-            <input id="NewPassword" placeholder="NewPassword" />
-            <label htmlFor="RepeatNewPassword" style={{ fontWeight: "bold" }}>Repeat New Password</label>
-            <input id="RepeatNewPasswor" placeholder="RepeatNewPassword" />
+            <label htmlFor="password" style={{ fontWeight: "bold" }}>Password</label>
+            <input id="password" type="password" placeholder="Password" />
+            <label htmlFor="passwordNew" style={{ fontWeight: "bold" }}>New Password</label>
+            <input id="passwordNew" type="password" placeholder="New Password" />
+            <label htmlFor="passwordNewRepeat" style={{ fontWeight: "bold" }}>Repeat New Password</label>
+            <input id="passwordNewRepeat" type="password" placeholder="Repeat New Password" />
             <button type="submit">Update password</button>
         </form>
 
-        <p></p>
+        {feedback && <p>{feedback}</p>}
     </div>
 }
