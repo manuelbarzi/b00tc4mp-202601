@@ -34,7 +34,7 @@ export function ProfileView({ onHomeClicked }) {
 
         <h2>Profile</h2>
 
-        <a href="" onClick={handleHomeClick}>Home</a>
+        <a className="button-link" href="" onClick={handleHomeClick}>Home</a>
 
         <form onSubmit={handleProfileNameSubmit}>
             <label htmlFor="name" style={{ fontWeight: "bold" }}>Name</label>

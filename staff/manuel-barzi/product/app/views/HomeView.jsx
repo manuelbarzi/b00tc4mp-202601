@@ -40,7 +40,7 @@ export function HomeView({ onProfileClicked, onLogoutClicked }) {
             <h1>Hello, {name}!</h1>
         </header>
 
-        <a href="" onClick={handleProfileClick} style={{ display: "block", marginBottom: "10px" }}>Profile</a>
+        <a className="button-link" href="" onClick={handleProfileClick}>Profile</a>
 
         <button onClick={handleLogoutClick}>Logout</button>
 

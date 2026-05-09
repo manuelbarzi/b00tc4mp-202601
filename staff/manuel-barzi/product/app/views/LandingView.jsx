@@ -17,7 +17,7 @@ export function LandingView({ onLoginClicked, onRegisterClicked }) {
         </header>
 
         <p>
-            <a href="" onClick={handleLoginClick}>Login</a> or <a href="" onClick={handleRegisterClick}>Register</a>
+            <a className="button-link" href="" onClick={handleLoginClick}>Login</a> or <a className="button-link" href="" onClick={handleRegisterClick}>Register</a>
         </p>
     </div>
 }

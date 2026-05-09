@@ -45,7 +45,7 @@ export function LoginView({ onRegisterClicked, onUserLoggedIn }) {
             <button type="submnit">Login</button>
         </form>
 
-        <a href="" onClick={handleRegisterClick} >Register</a>
+        <a className="button-link" href="" onClick={handleRegisterClick} >Register</a>
 
         {feedback && <p>{feedback}</p>}
     </div>

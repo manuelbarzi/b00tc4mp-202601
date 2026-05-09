@@ -57,7 +57,7 @@ export function RegisterView({ onLoginClicked, onUserRegistered }) {
             <button type="submit">Register</button>
         </form>
 
-        <a href="" onClick={handleLoginClick}>Login</a>
+        <a className="button-link" href="" onClick={handleLoginClick}>Login</a>
 
         {feedback && <p>{feedback}</p>}
     </div>
