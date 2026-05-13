@@ -34,34 +34,34 @@ export function ProfileView({ onHomeClicked }) {
 
         <h2>Profile</h2>
 
-        <a className="button-link" href="" onClick={handleHomeClick}>Home</a>
+        <a className="button" href="" onClick={handleHomeClick}>Home</a>
 
-        <form onSubmit={handleProfileNameSubmit}>
+        <form className="form" onSubmit={handleProfileNameSubmit}>
             <label htmlFor="name" style={{ fontWeight: "bold" }}>Name</label>
-            <input id="name" placeholder="Name" />
-            <button type="submit">Update name</button>
+            <input className="input" id="name" placeholder="Name" />
+            <button className="button" type="submit">Update name</button>
         </form>
 
-        <form>
+        <form className="form">
             <label htmlFor="email" style={{ fontWeight: "bold" }}>Email</label>
-            <input id="email" placeholder="Email" />
-            <button type="submit">Update email</button>
+            <input className="input" id="email" placeholder="Email" />
+            <button className="button" type="submit">Update email</button>
         </form>
 
-        <form>
+        <form className="form">
             <label htmlFor="username" style={{ fontWeight: "bold" }}>Username</label>
-            <input id="username" placeholder="Username" />
-            <button type="submit">Update username</button>
+            <input className="input" id="username" placeholder="Username" />
+            <button className="button" type="submit">Update username</button>
         </form>
 
-        <form>
+        <form className="form">
             <label htmlFor="password" style={{ fontWeight: "bold" }}>Password</label>
-            <input id="password" type="password" placeholder="Password" />
+            <input className="input" id="password" type="password" placeholder="Password" />
             <label htmlFor="passwordNew" style={{ fontWeight: "bold" }}>New Password</label>
-            <input id="passwordNew" type="password" placeholder="New Password" />
+            <input className="input" id="passwordNew" type="password" placeholder="New Password" />
             <label htmlFor="passwordNewRepeat" style={{ fontWeight: "bold" }}>Repeat New Password</label>
-            <input id="passwordNewRepeat" type="password" placeholder="Repeat New Password" />
-            <button type="submit">Update password</button>
+            <input className="input" id="passwordNewRepeat" type="password" placeholder="Repeat New Password" />
+            <button className="button" type="submit">Update password</button>
         </form>
 
         {feedback && <p>{feedback}</p>}

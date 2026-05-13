@@ -38,26 +38,26 @@ export function RegisterView({ onLoginClicked, onUserRegistered }) {
 
         <h2>Register</h2>
 
-        <form onSubmit={handleRegisterSubmit}>
+        <form className="form" onSubmit={handleRegisterSubmit}>
             <label htmlFor="name" style={{ fontWeight: "bold" }}>Name</label>
-            <input id="name" placeholder="Name" />
+            <input className="input" id="name" placeholder="Name" />
 
             <label htmlFor="email" style={{ fontWeight: "bold" }}>Email</label>
-            <input id="email" placeholder="Email" />
+            <input className="input" id="email" placeholder="Email" />
 
             <label htmlFor="username" style={{ fontWeight: "bold" }}>Username</label>
-            <input id="username" placeholder="Username" />
+            <input className="input" id="username" placeholder="Username" />
 
             <label htmlFor="password" style={{ fontWeight: "bold" }}>Password</label>
-            <input id="password" type="password" placeholder="Password" />
+            <input className="input" id="password" type="password" placeholder="Password" />
 
             <label htmlFor="passwordRepeat" style={{ fontWeight: "bold" }}>Repeat Password</label>
-            <input id="passwordRepeat" type="password" placeholder="Repeat Password" />
+            <input className="input" id="passwordRepeat" type="password" placeholder="Repeat Password" />
 
-            <button type="submit">Register</button>
+            <button className="button" type="submit">Register</button>
         </form>
 
-        <a className="button-link" href="" onClick={handleLoginClick}>Login</a>
+        <a className="button" href="" onClick={handleLoginClick}>Login</a>
 
         {feedback && <p>{feedback}</p>}
     </div>

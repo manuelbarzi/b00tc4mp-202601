@@ -1,8 +1,48 @@
 @import url('https://fonts.googleapis.com/css2?family=Changa+One:ital@0;1&family=Sixtyfour&display=swap');
 
-.button-link {
+body {
+    background-color: black;
+    color: greenyellow;
+    font-family: 'Changa One';
+}
+
+.input {
+    border: 1px solid greenyellow;
+    background-color: transparent;
+    line-height: 2;
+    font-size: 1rem;
+    color: greenyellow;
+    font-family: inherit;
+    padding-left: 0.25rem;
+}
+
+input::selection {
+    color: greenyellow;
+    background-color: red;
+}
+
+.button {
     text-decoration: none;
     background-color: greenyellow;
-    padding: 0.25rem 0.5rem;
-    font-family: 'Changa One';
+    padding: 0 0.5rem;
+    font-family: inherit;
+    font-size: 1rem;
+    border: 1px solid greenyellow;
+    line-height: 2;
+}
+
+.button:visited {
+    color: black;
+}
+
+a.button {
+    text-decoration: underline;
+    display: inline-block;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 1rem 0;
 }
