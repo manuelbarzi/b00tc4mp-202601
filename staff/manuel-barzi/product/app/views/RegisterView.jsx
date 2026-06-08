@@ -54,10 +54,10 @@ export function RegisterView({ onLoginClicked, onUserRegistered }) {
             <label htmlFor="passwordRepeat" style={{ fontWeight: "bold" }}>Repeat Password</label>
             <input className="input" id="passwordRepeat" type="password" placeholder="Repeat Password" />
 
-            <button className="button" type="submit">Register</button>
+            <button className="bg-[greenyellow] text-[black] border-[greenyellow] border px-2 leading-loose" type="submit">Register</button>
         </form>
 
-        <a className="button" href="" onClick={handleLoginClick}>Login</a>
+        <a className="bg-[greenyellow] text-[black] border-[greenyellow] border px-2 leading-loose underline inline-block" href="" onClick={handleLoginClick}>Login</a>
 
         {feedback && <p>{feedback}</p>}
     </div>

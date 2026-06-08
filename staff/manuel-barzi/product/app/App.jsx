@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { LandingView, LoginView, RegisterView, HomeView, ProfileView } from './views/index'
+import { LandingView, LoginView, RegisterView, HomeView, ProfileView } from './views'
 
 export function App() {
     var [view, setView] = useState('landing')

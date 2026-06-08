@@ -17,7 +17,7 @@ export function LandingView({ onLoginClicked, onRegisterClicked }) {
         </header>
 
         <p>
-            <a className="button" href="" onClick={handleLoginClick}>Login</a> or <a className="button" href="" onClick={handleRegisterClick}>Register</a>
+            <a className="bg-[greenyellow] text-[black] border-[greenyellow] border px-2 leading-loose underline inline-block" href="" onClick={handleLoginClick}>Login</a> or <a className="bg-[greenyellow] text-[black] border-[greenyellow] border px-2 leading-loose underline inline-block" href="" onClick={handleRegisterClick}>Register</a>
         </p>
     </div>
 }

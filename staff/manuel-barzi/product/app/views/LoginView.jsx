@@ -42,10 +42,10 @@ export function LoginView({ onRegisterClicked, onUserLoggedIn }) {
             <label htmlFor="password" style={{ fontWeight: "bold" }}>Password</label>
             <input className="input" id="password" type='password' placeholder="Password" />
 
-            <button className="button" type="submnit">Login</button>
+            <button className="bg-[greenyellow] text-[black] border-[greenyellow] border px-2 leading-loose" type="submnit">Login</button>
         </form>
 
-        <a className="button" href="" onClick={handleRegisterClick} >Register</a>
+        <a className="bg-[greenyellow] text-[black] border-[greenyellow] border px-2 leading-loose underline inline-block" href="" onClick={handleRegisterClick} >Register</a>
 
         {feedback && <p>{feedback}</p>}
     </div>
