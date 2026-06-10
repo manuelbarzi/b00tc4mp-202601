@@ -38,21 +38,21 @@ export function RegisterView({ onLoginClicked, onUserRegistered }) {
 
         <h2>Register</h2>
 
-        <form className="form" onSubmit={handleRegisterSubmit}>
+        <form className="flex flex-col gap-1 my-1" onSubmit={handleRegisterSubmit}>
             <label htmlFor="name" style={{ fontWeight: "bold" }}>Name</label>
-            <input className="input" id="name" placeholder="Name" />
+            <input className="border-[greenyellow] border px-2 leading-loose selection:text-[greenyellow] selection:bg-[red]" id="name" placeholder="Name" />
 
             <label htmlFor="email" style={{ fontWeight: "bold" }}>Email</label>
-            <input className="input" id="email" placeholder="Email" />
+            <input className="border-[greenyellow] border px-2 leading-loose selection:text-[greenyellow] selection:bg-[red]" id="email" placeholder="Email" />
 
             <label htmlFor="username" style={{ fontWeight: "bold" }}>Username</label>
-            <input className="input" id="username" placeholder="Username" />
+            <input className="border-[greenyellow] border px-2 leading-loose selection:text-[greenyellow] selection:bg-[red]" id="username" placeholder="Username" />
 
             <label htmlFor="password" style={{ fontWeight: "bold" }}>Password</label>
-            <input className="input" id="password" type="password" placeholder="Password" />
+            <input className="border-[greenyellow] border px-2 leading-loose selection:text-[greenyellow] selection:bg-[red]" id="password" type="password" placeholder="Password" />
 
             <label htmlFor="passwordRepeat" style={{ fontWeight: "bold" }}>Repeat Password</label>
-            <input className="input" id="passwordRepeat" type="password" placeholder="Repeat Password" />
+            <input className="border-[greenyellow] border px-2 leading-loose selection:text-[greenyellow] selection:bg-[red]" id="passwordRepeat" type="password" placeholder="Repeat Password" />
 
             <button className="bg-[greenyellow] text-[black] border-[greenyellow] border px-2 leading-loose" type="submit">Register</button>
         </form>

@@ -40,9 +40,9 @@ export function HomeView({ onProfileClicked, onLogoutClicked }) {
             <h1>Hello, {name}!</h1>
         </header>
 
-        <a className="button" href="" onClick={handleProfileClick}>Profile</a>
-
-        <button className="button" onClick={handleLogoutClick}>Logout</button>
+        <a className="bg-[greenyellow] text-[black] border-[greenyellow] border px-2 leading-loose underline inline-block" href="" onClick={handleProfileClick}>Profile</a>
+        
+        <button className="bg-[greenyellow] text-[black] border-[greenyellow] border px-2 leading-loose" onClick={handleLogoutClick}>Logout</button>
 
         {feedback && <p>{feedback}</p>}
     </div>

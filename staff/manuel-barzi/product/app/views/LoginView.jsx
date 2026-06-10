@@ -35,12 +35,12 @@ export function LoginView({ onRegisterClicked, onUserLoggedIn }) {
 
         <h2>Login</h2>
 
-        <form className="form" onSubmit={handleLoginSubmit}>
+        <form className="flex flex-col gap-1 my-1" onSubmit={handleLoginSubmit}>
             <label htmlFor="username" style={{ fontWeight: "bold" }}>Username</label>
-            <input className="input" id="username" placeholder="Username" />
+            <input className="border-[greenyellow] border px-2 leading-loose selection:text-[greenyellow] selection:bg-[red]" id="username" placeholder="Username" />
 
             <label htmlFor="password" style={{ fontWeight: "bold" }}>Password</label>
-            <input className="input" id="password" type='password' placeholder="Password" />
+            <input className="border-[greenyellow] border px-2 leading-loose selection:text-[greenyellow] selection:bg-[red]" id="password" type='password' placeholder="Password" />
 
             <button className="bg-[greenyellow] text-[black] border-[greenyellow] border px-2 leading-loose" type="submnit">Login</button>
         </form>

@@ -34,34 +34,34 @@ export function ProfileView({ onHomeClicked }) {
 
         <h2>Profile</h2>
 
-        <a className="button" href="" onClick={handleHomeClick}>Home</a>
+        <a className="bg-[greenyellow] text-[black] border-[greenyellow] border px-2 leading-loose underline inline-block" href="" onClick={handleHomeClick}>Home</a>
 
-        <form className="form" onSubmit={handleProfileNameSubmit}>
+        <form className="flex flex-col gap-1 my-1" onSubmit={handleProfileNameSubmit}>
             <label htmlFor="name" style={{ fontWeight: "bold" }}>Name</label>
-            <input className="input" id="name" placeholder="Name" />
-            <button className="button" type="submit">Update name</button>
+            <input className="border-[greenyellow] border px-2 leading-loose selection:text-[greenyellow] selection:bg-[red]" id="name" placeholder="Name" />
+            <button className="bg-[greenyellow] text-[black] border-[greenyellow] border px-2 leading-loose" type="submit">Update name</button>
         </form>
 
-        <form className="form">
+        <form className="flex flex-col gap-1 my-1">
             <label htmlFor="email" style={{ fontWeight: "bold" }}>Email</label>
-            <input className="input" id="email" placeholder="Email" />
-            <button className="button" type="submit">Update email</button>
+            <input className="border-[greenyellow] border px-2 leading-loose selection:text-[greenyellow] selection:bg-[red]" id="email" placeholder="Email" />
+            <button className="bg-[greenyellow] text-[black] border-[greenyellow] border px-2 leading-loose" type="submit">Update email</button>
         </form>
 
-        <form className="form">
+        <form className="flex flex-col gap-1 my-1">
             <label htmlFor="username" style={{ fontWeight: "bold" }}>Username</label>
-            <input className="input" id="username" placeholder="Username" />
-            <button className="button" type="submit">Update username</button>
+            <input className="border-[greenyellow] border px-2 leading-loose selection:text-[greenyellow] selection:bg-[red]" id="username" placeholder="Username" />
+            <button className="bg-[greenyellow] text-[black] border-[greenyellow] border px-2 leading-loose" type="submit">Update username</button>
         </form>
 
-        <form className="form">
+        <form className="flex flex-col gap-1 my-1">
             <label htmlFor="password" style={{ fontWeight: "bold" }}>Password</label>
-            <input className="input" id="password" type="password" placeholder="Password" />
+            <input className="border-[greenyellow] border px-2 leading-loose selection:text-[greenyellow] selection:bg-[red]" id="password" type="password" placeholder="Password" />
             <label htmlFor="passwordNew" style={{ fontWeight: "bold" }}>New Password</label>
-            <input className="input" id="passwordNew" type="password" placeholder="New Password" />
+            <input className="border-[greenyellow] border px-2 leading-loose selection:text-[greenyellow] selection:bg-[red]" id="passwordNew" type="password" placeholder="New Password" />
             <label htmlFor="passwordNewRepeat" style={{ fontWeight: "bold" }}>Repeat New Password</label>
-            <input className="input" id="passwordNewRepeat" type="password" placeholder="Repeat New Password" />
-            <button className="button" type="submit">Update password</button>
+            <input className="border-[greenyellow] border px-2 leading-loose selection:text-[greenyellow] selection:bg-[red]" id="passwordNewRepeat" type="password" placeholder="Repeat New Password" />
+            <button className="bg-[greenyellow] text-[black] border-[greenyellow] border px-2 leading-loose" type="submit">Update password</button>
         </form>
 
         {feedback && <p>{feedback}</p>}
