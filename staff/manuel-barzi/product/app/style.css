@@ -1,2 +1,38 @@
 @import url('https://fonts.googleapis.com/css2?family=Changa+One:ital@0;1&family=Sixtyfour&display=swap');
 @import 'tailwindcss';
+
+.header {
+    @apply flex items-center gap-2 mb-4;
+}
+
+.logo-image {
+    @apply w-[3rem] rounded-full;
+}
+
+.input {
+    @apply border-[greenyellow] border w-full px-3 py-1 leading-loose rounded selection:text-[greenyellow] selection:bg-[red];
+}
+
+.button {
+    @apply bg-[greenyellow] text-[black] border-[greenyellow] border px-4 py-1 leading-loose rounded cursor-pointer;
+}
+
+.button-link {
+    @apply underline inline-block w-auto;
+}
+
+.form {
+    @apply flex flex-col gap-2 my-4;
+}
+
+.label {
+    @apply font-bold;
+}
+
+.title {
+    @apply text-center text-2xl;
+}
+
+.feedback {
+    @apply bg-[crimson] text-center p-2 rounded;
+}

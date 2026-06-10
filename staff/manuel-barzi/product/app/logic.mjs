@@ -1,6 +1,6 @@
 import { data } from './data.mjs'
 
-export var logic = {
+export const logic = {
     registerUser: function (name, email, username, password, passwordRepeat) {
         // TODO improve input validations
         if (name.trim() === '') throw new Error('name is empty')
@@ -11,7 +11,7 @@ export var logic = {
 
         if (password !== passwordRepeat) throw new Error('passwords do not match')
 
-        var user = data.findUserByEmail(email)
+        let user = data.findUserByEmail(email)
 
         if (user) throw new Error('user with email already exists')
 
@@ -35,7 +35,7 @@ export var logic = {
         if (username.trim() === '') throw new Error('username is empty')
         if (password.trim() === '') throw new Error('password is empty')
 
-        var user = data.findUserByUsername(username)
+        const user = data.findUserByUsername(username)
 
         if (!user) throw new Error('user not found')
 
@@ -45,9 +45,9 @@ export var logic = {
     },
 
     getLoggedInUserName: function() {
-        var userId = data.getLoggedInUserId()
+        const userId = data.getLoggedInUserId()
 
-        var user = data.findUserById(userId)
+        const user = data.findUserById(userId)
 
         return user.name
     },
@@ -57,13 +57,13 @@ export var logic = {
     },
 
     modifyUserName: function(name) {
-        var userId = data.getLoggedInUserId()
+        const userId = data.getLoggedInUserId()
 
         data.updateUserName(userId, name)
     },
 
     modifyUserEmail: function(email) {
-        var userId = data.getLoggedInUserId()
+        const userId = data.getLoggedInUserId()
 
         data.updateUserEmail(userId, email)
     }

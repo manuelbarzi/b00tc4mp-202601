@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { LandingView, LoginView, RegisterView, HomeView, ProfileView } from './views'
 
 export function App() {
-    var [view, setView] = useState('landing')
+    const [view, setView] = useState('landing')
 
     function handleLoginClicked() {
         setView('login')

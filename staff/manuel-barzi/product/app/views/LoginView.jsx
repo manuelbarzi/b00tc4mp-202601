@@ -3,19 +3,19 @@ import { useState } from 'react'
 import { logic } from '../logic'
 
 export function LoginView({ onRegisterClicked, onUserLoggedIn }) {
-    var [feedback, setFeedback] = useState('')
+    const [feedback, setFeedback] = useState('')
 
-    var handleRegisterClick = event => {
+    const handleRegisterClick = event => {
         event.preventDefault()
 
         onRegisterClicked()
     }
 
-    var handleLoginSubmit = event => {
+    const handleLoginSubmit = event => {
         event.preventDefault()
 
-        var username = event.target.username.value
-        var password = event.target.password.value
+        const username = event.target.username.value
+        const password = event.target.password.value
 
         try {
             logic.loginUser(username, password)
@@ -29,24 +29,24 @@ export function LoginView({ onRegisterClicked, onUserLoggedIn }) {
     }
 
     return <div>
-        <header>
-            <img src="https://cdn.prod.website-files.com/624ac40503a527cf47af4192/659ba59520d886f0cb86d3ba_ai-logo-generator-4.png" style={{ width: "100px" }} /> <h1 style={{ display: "inline-block" }}>App</h1>
+        <header className="header">
+            <img className="logo-image" src="https://cdn.prod.website-files.com/624ac40503a527cf47af4192/659ba59520d886f0cb86d3ba_ai-logo-generator-4.png" /> <h1>App</h1>
         </header>
 
-        <h2>Login</h2>
+        <h2 className="title">Login</h2>
 
-        <form className="flex flex-col gap-1 my-1" onSubmit={handleLoginSubmit}>
-            <label htmlFor="username" style={{ fontWeight: "bold" }}>Username</label>
-            <input className="border-[greenyellow] border px-2 leading-loose selection:text-[greenyellow] selection:bg-[red]" id="username" placeholder="Username" />
+        <form className="form" onSubmit={handleLoginSubmit}>
+            <label htmlFor="username" className="label">Username</label>
+            <input className="input" id="username" placeholder="Username" />
 
-            <label htmlFor="password" style={{ fontWeight: "bold" }}>Password</label>
-            <input className="border-[greenyellow] border px-2 leading-loose selection:text-[greenyellow] selection:bg-[red]" id="password" type='password' placeholder="Password" />
+            <label htmlFor="password" className="label">Password</label>
+            <input className="input" id="password" type='password' placeholder="Password" />
 
-            <button className="bg-[greenyellow] text-[black] border-[greenyellow] border px-2 leading-loose" type="submnit">Login</button>
+            <button className="button w-full" type="submnit">Login</button>
         </form>
 
-        <a className="bg-[greenyellow] text-[black] border-[greenyellow] border px-2 leading-loose underline inline-block" href="" onClick={handleRegisterClick} >Register</a>
+        <a className="button button-link" href="" onClick={handleRegisterClick} >Register</a>
 
-        {feedback && <p>{feedback}</p>}
+        {feedback && <p className="feedback">{feedback}</p>}
     </div>
 }
