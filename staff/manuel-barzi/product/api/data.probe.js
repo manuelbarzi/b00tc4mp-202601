@@ -39,3 +39,26 @@ console.log(userById)
 // update a user's name
 
 data.updateUserName('ID8765902459775687', 'Manuel Barzi Updated')
+
+// update a user's password
+
+data.updateUserPassword('ID8765902459775687', '234234234')
+const userByIdPasswordUpdated = data.findUserById('ID8765902459775687')
+
+console.log(userByIdPasswordUpdated)
+// { name: 'Manuel Barzi', ..., password: '234234234', ... }
+
+// update a user's username
+
+data.updateUserUsername('ID8765902459775687', 'manuelbarzi')
+const userByIdUsernameUpdated = data.findUserById('ID8765902459775687')
+console.log(userByIdUsernameUpdated)
+// { name: 'Manuel Barzi', ..., username: 'manuelbarzi', ... }
+
+
+// delete a user by id
+
+data.deleteUserById('ID8442068131950731')
+const userByIdDeleted = data.findUserById('ID8442068131950731')
+console.log(userByIdDeleted)
+// null

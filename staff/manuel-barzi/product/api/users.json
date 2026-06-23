@@ -2,7 +2,7 @@
   {
     "name": "Manuel Barzi",
     "email": "manuel.barzi@example.com",
-    "username": "manuel",
+    "username": "manuelbarzi",
     "password": "123123123",
     "id": "ID8765902459775687"
   },
@@ -11,6 +11,13 @@
     "email": "john.doe@example.com",
     "username": "johndoe",
     "password": "123123123",
-    "id": "ID7849513284636278"
+    "id": "ID07798367609462609"
+  },
+  {
+    "name": "Pepito Grillo",
+    "email": "pepito.grillo@example.com",
+    "username": "pepitogrillo",
+    "password": "123123123",
+    "id": "ID28380303131557094"
   }
 ]
