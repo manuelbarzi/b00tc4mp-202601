@@ -42,5 +42,52 @@ export const logic = {
         if (user.password !== password) throw new Error('wrong password')
 
         return user.id
+    },
+
+    getLoggedInUserName: function (userId) {
+        const user = data.findUserById(userId)
+
+        if (!user) throw new Error('user not found')
+
+        return user.name
+    },
+
+    modifyUserName: function (userId, name) {
+        const user = data.findUserById(userId)
+
+        if (!user) throw new Error('user not found')
+
+        data.updateUserName(userId, name)
+    },
+
+    modifyUserEmail: function (userId, email) {
+        const user = data.findUserById(userId)
+
+        if (!user) throw new Error('user not found')
+
+        data.updateUserEmail(userId, email)
+    },
+    
+    modifyUserUsername: function (userId, username) {
+        const user = data.findUserById(userId)
+        
+        if (!user) throw new Error('user not found')
+
+        data.updateUserUsername(userId, username)
+    },
+
+    modifyUserPassword: function (userId, password, newPassword, newPasswordRepeat) {
+        if (password.trim() === '') throw new Error('password is empty')
+        if (newPassword.trim() === '') throw new Error('newPassword is empty')
+        if (newPasswordRepeat.trim() === '') throw new Error('newPasswordRepeat is empty')
+        if (newPassword !== newPasswordRepeat) throw new Error('new passwords do not match')
+
+        const user = data.findUserById(userId)
+
+        if (!user) throw new Error('user not found')
+
+        if (user.password !== password) throw new Error('wrong password')
+
+        data.updateUserPassword(userId, newPassword)
     }
 }
