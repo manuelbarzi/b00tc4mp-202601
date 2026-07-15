@@ -1,8 +1,24 @@
-const express = require("express")
+const express = require('express')
 
 const server = express()
 
 const jsonBodyParser = express.json()
+
+// path parameters (deterministic)
+
+server.get('/users/:name/:age', (req, res) => {
+    const name = req.params.name
+    const age = req.params.age
+    res.send(`Hola, ${name}! Tú tienes ${age} años.`)
+})
+
+// query parameters (non-deterministic)
+
+server.get('/hello', (req, res) => {
+    res.send(`<h1 style="color: blue;">Hello, ${req.query.to}!</h1>`)
+})
+
+// ARRAY PARA HACER PRUEBAS DE FILTRADO DE DATOS CON QUERY PARAMETERS Y PATH PARAMETERS
 
 const cars = [
     {
@@ -115,26 +131,6 @@ const cars = [
     }
 ]
 
-// server.get('/hello', (req, res) => {
-//     res.send('Hello World!')
-// })
-
-// path parameters (deterministic)
-
-server.get('/users/:name/:age', (req, res) => {
-    const name = req.params.name
-    const age = req.params.age
-    res.send(`Hola, ${name}! Tú tienes ${age} años.`)
-})
-
-// query parameters (non-deterministic)
-
-server.get('/hello', (req, res) => {
-    res.send(`Hello, ${req.query.to}!`)
-})
-
-/* TODO use query parameters to filter the cars by brand, model, and/or year. For example, /cars?brand=Toyota&year=2020 should return only the Toyota cars from 2020.
-
 server.get('/cars', (req, res) => {
     const brand = req.query.brand
     const model = req.query.model
@@ -155,16 +151,16 @@ server.get('/cars', (req, res) => {
     }
 
     res.json(filteredCars)
+})
+
+
+/* TODO use path parameters to get a specific car brand by its index in the array
+
+server.get('/cars/:brand', (req, res) => {
+    const brand = req.params.brand
+    const filteredCars = cars.filter(car => car.brand === brand)
+    res.json(filteredCars)
 }) */
-
-
-// TODO use path parameters to get a specific car brand by its index in the array
-
-// server.get('/cars/:brand', (req, res) => {
-//     const brand = req.params.brand
-//     const filteredCars = cars.filter(car => car.brand === brand)
-//     res.json(filteredCars)
-// }) 
 
 /* LO MISMO QUE ARRIBA PERO CON QUERY PARAMETERS    
 server.get('/cars', (req, res) => {
@@ -186,10 +182,11 @@ server.post('/cars', jsonBodyParser, (req, res) => {
 
     cars.push(newCar)
 
-    res.status(201).json({ success: true, message: 'Car created successfully', carId: newCar.id })
+    res.status(201).json({ sucess: true, message: 'Car created successfully', carId: newCar.id })
 })
 
-server.get('/cars/:carId', (req, res) => {
+server.get('/cars/:carId', (req,res) => {
+
     const carId = Number(req.params.carId)
 
     const car = cars.find(car => car.id === carId)
@@ -201,9 +198,37 @@ server.get('/cars/:carId', (req, res) => {
     res.status(200).json({ success: true, car })
 })
 
-// TODO implement a PATCH endpoint to update a car by its ID
+server.patch('/cars/:carId', jsonBodyParser, (req, res) => {
+    const carId = Number(req.params.carId)
+    const updates = req.body
+    
+    const carIndex = cars.findIndex(car => car.id === carId)
+    
+    if (carIndex === -1) {
+        return res.status(404).json({ success: false, message: 'Car not found' })
+    }
+    
+    // Update the car with new properties
+    cars[carIndex] = { ...cars[carIndex], ...updates }
+    
+    res.status(204).json({ success: true, message: 'Car updated successfully', car: cars[carIndex] })
+})
 
-// TODO implement a DELETE endpoint to delete a car by its ID
+server.delete('/cars/:carId', (req, res) => {
+    const carId = Number(req.params.carId)
+    
+    const carIndex = cars.findIndex(car => car.id === carId)
+    
+    if (carIndex === -1) {
+        return res.status(404).json({ success: false, message: 'Car not found' })
+    }
+    
+    // Remove the car from array
+    const deletedCar = cars.splice(carIndex, 1)[0]
+    
+    res.status(200).json({ success: true, message: 'Car deleted successfully', car: deletedCar })
+})
+
 
 server.listen(3000, () => {
     console.log('Server is running on port 3000')
