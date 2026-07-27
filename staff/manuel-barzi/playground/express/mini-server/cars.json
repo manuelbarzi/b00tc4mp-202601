@@ -112,5 +112,11 @@
         "model": "Model 3",
         "year": 2023,
         "id": 19
+    },
+    {
+        "brand": "Tesla",
+        "model": "Model 3",
+        "year": 2022,
+        "id": 20
     }
 ]

@@ -1,5 +1,5 @@
 const express = require('express')
-const fs = require('fs')
+const fs = require('fs/promises') // Use the promises API of fs for better async handling
 
 const server = express()
 
@@ -26,29 +26,29 @@ server.get('/cars', (req, res) => {
     const model = req.query.model
     const year = Number(req.query.year)
 
-    fs.readFile('cars.json', 'utf8', (error, json) => {
-        if (error) {
-            return res.status(500).json({ success: false, message: 'Error reading cars file' })
-        }
+    fs.readFile('cars.json', 'utf8')
+        .then(json => {
+            const cars = JSON.parse(json)
 
-        const cars = JSON.parse(json)
+            let filteredCars = cars
 
-        let filteredCars = cars
+            if (brand) {
+                filteredCars = filteredCars.filter(car => car.brand === brand)
+            }
 
-        if (brand) {
-            filteredCars = filteredCars.filter(car => car.brand === brand)
-        }
+            if (model) {
+                filteredCars = filteredCars.filter(car => car.model === model)
+            }
 
-        if (model) {
-            filteredCars = filteredCars.filter(car => car.model === model)
-        }
+            if (year) {
+                filteredCars = filteredCars.filter(car => car.year === year)
+            }
 
-        if (year) {
-            filteredCars = filteredCars.filter(car => car.year === year)
-        }
-
-        res.json(filteredCars)
-    })
+            res.json(filteredCars)
+        })
+        .catch(error => {
+            res.status(500).json({ success: false, message: 'Error reading cars file' })
+        })
 
 })
 
@@ -76,24 +76,24 @@ server.get('/cars', (req, res) => {
 server.post('/cars', jsonBodyParser, (req, res) => {
     const newCar = req.body
 
-    fs.readFile('cars.json', 'utf8', (error, json) => {
-        if (error) {
-            return res.status(500).json({ success: false, message: 'Error reading cars file' })
-        }
+    fs.readFile('cars.json', 'utf8')
+        .then(json => {
+            const cars = JSON.parse(json)
 
-        const cars = JSON.parse(json)
+            newCar.id = cars.length + 1
+            cars.push(newCar)
 
-        newCar.id = cars.length + 1
-        cars.push(newCar)
-
-        fs.writeFile('cars.json', JSON.stringify(cars, null, 4), (error) => {
-            if (error) {
-                return res.status(500).json({ success: false, message: 'Error writing cars file' })
-            }
-
-            res.status(201).json({ success: true, message: 'Car created successfully', carId: newCar.id })
+            return fs.writeFile('cars.json', JSON.stringify(cars, null, 4))
+                .then(() => {
+                    res.status(201).json({ success: true, message: 'Car created successfully', carId: newCar.id })
+                })
+                .catch(error => {
+                    return res.status(500).json({ success: false, message: 'Error writing cars file' })
+                })
         })
-    })
+        .catch(error => {
+            res.status(500).json({ success: false, message: 'Error reading cars file' })
+        })
 })
 
 server.get('/cars/:carId', (req, res) => {
