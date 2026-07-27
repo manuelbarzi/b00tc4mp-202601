@@ -5,10 +5,11 @@ fetch('http://localhost:3000/cars', {
     },
     body: JSON.stringify({
         brand: 'Tesla',
-        model: 'Model 5',
-        year: 2030
+        model: 'Model 3',
+        year: 2022
     })
 })
+
 .then (response => {
     if (!response.ok) {
         throw new Error('Error creating car')
@@ -16,9 +17,11 @@ fetch('http://localhost:3000/cars', {
 
     return response.json()
 })
+
 .then(body => {
     console.log('Car created successfully:', body)
 })
+
 .catch(error => {
     console.error('There was a problem with the fetch operation:', error)
 })
