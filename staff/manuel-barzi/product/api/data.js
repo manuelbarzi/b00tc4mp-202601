@@ -1,56 +1,60 @@
-import fs from 'fs'
+import fs from 'fs/promises'
 
 export const data = {
-    insertUser: function(user) {
+    insertUser: function (user) {
         user.id = 'ID' + Math.random().toString().slice(2)
 
-        let usersJSON = fs.readFileSync('users.json', 'utf-8')
-        const users = JSON.parse(usersJSON)
+        return fs.readFile('users.json', 'utf-8')
+            .catch(error => { throw new Error('Error reading users.json file: ' + error.message) })
+            .then(usersJSON => {
+                const users = JSON.parse(usersJSON)
 
-        users.push(user)
+                users.push(user)
 
-        usersJSON = JSON.stringify(users, null, 2)
-        fs.writeFileSync('users.json', usersJSON)
+                return fs.writeFile('users.json', JSON.stringify(users, null, 2))
+                    .catch(error => { throw new Error('Error writing to users.json file: ' + error.message) })
+                    .then(() => user)
+            })
     },
 
-    findUserByEmail: function(email) {
+    findUserByEmail: function (email) {
         const usersJSON = fs.readFileSync('users.json', 'utf-8')
         const users = JSON.parse(usersJSON)
 
-        const user = users.find(function(user) {
+        const user = users.find(function (user) {
             return user.email === email
         }) || null
 
         return user
     },
 
-    findUserByUsername: function(username) {
+    findUserByUsername: function (username) {
         const usersJSON = fs.readFileSync('users.json', 'utf-8')
         const users = JSON.parse(usersJSON)
 
-        const user = users.find(function(user) {
+        const user = users.find(function (user) {
             return user.username === username
         }) || null
 
         return user
     },
 
-    findUserById: function(userId) {
+    findUserById: function (userId) {
         const usersJSON = fs.readFileSync('users.json', 'utf-8')
         const users = JSON.parse(usersJSON)
-        
-        const user = users.find(function(user) {
+
+        const user = users.find(function (user) {
             return user.id === userId
         }) || null
 
         return user
     },
 
-    updateUserName: function(userId, name) {
+    updateUserName: function (userId, name) {
         let usersJSON = fs.readFileSync('users.json', 'utf-8')
         const users = JSON.parse(usersJSON)
 
-        const user = users.find(function(user) {
+        const user = users.find(function (user) {
             return user.id === userId
         }) || null
 
@@ -62,11 +66,11 @@ export const data = {
         }
     },
 
-    updateUserEmail: function(userId, email) {
+    updateUserEmail: function (userId, email) {
         let usersJSON = fs.readFileSync('users.json', 'utf-8')
         const users = JSON.parse(usersJSON)
 
-        const user = users.find(function(user) {
+        const user = users.find(function (user) {
             return user.id === userId
         }) || null
 
@@ -78,11 +82,11 @@ export const data = {
         }
     },
 
-    updateUserPassword: function(userId, newPassword) {
+    updateUserPassword: function (userId, newPassword) {
         let usersJSON = fs.readFileSync('users.json', 'utf-8')
         const users = JSON.parse(usersJSON)
 
-        const user = users.find(function(user) {
+        const user = users.find(function (user) {
             return user.id === userId
         }) || null
 
@@ -94,11 +98,11 @@ export const data = {
         }
     },
 
-    updateUserUsername: function(userId, username) {
+    updateUserUsername: function (userId, username) {
         let usersJSON = fs.readFileSync('users.json', 'utf-8')
         const users = JSON.parse(usersJSON)
 
-        const user = users.find(function(user) {
+        const user = users.find(function (user) {
             return user.id === userId
         }) || null
 
@@ -110,11 +114,11 @@ export const data = {
         }
     },
 
-    deleteUserById: function(userId) {
+    deleteUserById: function (userId) {
         let usersJSON = fs.readFileSync('users.json', 'utf-8')
         const users = JSON.parse(usersJSON)
 
-        const userIndex = users.findIndex(function(user) {
+        const userIndex = users.findIndex(function (user) {
             return user.id === userId
         })
 

@@ -19,5 +19,12 @@
     "username": "pepitagrillo",
     "password": "321321321",
     "id": "ID28380303131557094"
+  },
+  {
+    "name": "Manuel Barzi",
+    "email": "manuel.barzi@example.com",
+    "username": "manuel",
+    "password": "123123123",
+    "id": "ID9863122384451747"
   }
 ]
